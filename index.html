@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Movie DataBase</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <h1>The Movie DataBase</h1>
+    <ul class="nav-links">
+      <li><a href="/views/topRated.html" id="topRatedBtn">Top rankade</a></li>
+      <li><a href="/views/topPopular.html" id="popularBtn">Populära</a></li>
+      <li>
+        <form id="movieSearchForm">
+          <input type="text" id="movieSearchInput" placeholder="Sök film..." />
+          <button id="searchMovieBtn" type="submit">Sök film</button>
+        </form>
+      </li>
+      <li>
+        <form id="personSearchForm">
+          <input type="text" id="personSearchInput" placeholder="Sök person..." />
+          <button type="submit">Sök person</button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+
+  <div>
+    <label for="sortSelect">Sortera efter:</label>
+    <select id="sortSelect">
+      <option value="nameAsc">Namn (A-Ö)</option>
+      <option value="nameDesc">Namn (Ö-A)</option>
+      <option value="popularityAsc">Populäraste (Låg till Hög)</option>
+      <option value="popularityDesc">Populäraste (Hög till Låg)</option>
+    </select>
+  </div>
+
+  <div id="searchResults" class="movie-grid"></div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>

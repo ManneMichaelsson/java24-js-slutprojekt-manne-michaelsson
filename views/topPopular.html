@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Rated Filmer | The Movie Database</title>
+  <link rel="stylesheet" href="/style.css" />
+
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1><a href="/index.html">The Movie Database</a></h1>
+        <ul class="nav-links">
+          <li><a href="topRated.html" class="active">Top rankade</a></li>
+          <li><a href="topPopular.html">Populära</a></li>
+          <li>
+            <!-- Filmsökning -->
+            <form id="movieSearchForm">
+              <input type="text" id="movieSearchInput" placeholder="Sök film..." />
+              <button type="submit">Sök film</button>
+      </form>
+      
+      <!-- Person-sökning -->
+      <form id="personSearchForm">
+          <input type="text" id="personSearchInput" placeholder="Sök person..." />
+          <button type="submit">Sök person</button>
+      </form>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+  <main>
+    <h2>Top 10 populära filmer</h2>
+    <div id="topTenContainer" class="movie-grid"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Movie Database</p>
+  </footer>
+
+  <script type="module" src="/js/topPopular.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
