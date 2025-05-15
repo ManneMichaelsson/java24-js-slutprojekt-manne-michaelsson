@@ -47,31 +47,32 @@ function displayMovies(movies) {
     });
 }
 
-function getBasePath() {
-  const pathname = window.location.pathname;
-  const lastSlashIndex = pathname.lastIndexOf("/");
-  const basePath = window.location.origin + pathname.slice(0, lastSlashIndex + 1);
-  return basePath;
+function goToIndex(type, searchTerm) {
+    const path = window.location.pathname;
+    const isGithubPages = path.includes("java24-js-slutprojekt-manne-michaelsson");
+
+    const basePath = isGithubPages ? "/java24-js-slutprojekt-manne-michaelsson" : "";
+    window.location.href = `${basePath}/index.html?type=${type}&search=${encodeURIComponent(searchTerm)}`;
 }
 
 searchMovieForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const searchTerm = movieSearchInput.value.trim();
-  if (searchTerm) {
-    const basePath = getBasePath();
-    window.location.href = `${basePath}index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
-  }
+    const searchTerm = movieSearchInput.value.trim();
+
+    if (searchTerm) {
+        goToIndex("movie", searchTerm);
+    }
 });
 
 searchPersonForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const searchTerm = personSearchInput.value.trim();
-  if (searchTerm) {
-    const basePath = getBasePath();
-    window.location.href = `${basePath}index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
-  }
+    const searchTerm = personSearchInput.value.trim();
+
+    if (searchTerm) {
+        goToIndex("person", searchTerm);
+    }
 });
 
 fetchTopRatedMovies();
