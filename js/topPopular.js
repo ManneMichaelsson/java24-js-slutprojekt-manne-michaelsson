@@ -92,7 +92,7 @@ searchPersonForm.addEventListener("submit", (event) => {
     const searchTerm = personSearchInput.value.trim();
 
     if(searchTerm) {
-        window.location.href = `/index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
+        window.location.href = `../index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
     }
 })
 
