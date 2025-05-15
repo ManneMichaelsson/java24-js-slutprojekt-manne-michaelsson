@@ -53,55 +53,31 @@ function displayMovies(movies){
 
 }
 
-
-personSearchForm.addEventListener("submit", function(event){
-    event.preventDefault();
-    const searchTerm = document.getElementById("personSearchInput").value;
-
-    if(searchTerm.trim() !== ""){
-        window.location.href = `/index.html?search=${encodeURIComponent(searchTerm)}`;
-    } else {
-        alert("Vänligen ange ett namn för att söka efter en person.");
-    }
-})
-
-movieSearchForm.addEventListener("submit", function(event){
-    event.preventDefault();
-    const searchTerm = document.getElementById("movieSearchInput").value;
-
-    if(searchTerm.trim() !== ""){
-        window.location.href = `/index.html?search=${encodeURIComponent(searchTerm)}`;
-    } else {
-        alert("Vänligen ange ett namn för att söka efter en film.");
-    }
-})
+function getBasePath() {
+  return window.location.hostname === "mannemichaelsson.github.io"
+    ? "/java24-js-slutprojekt-manne-michaelsson"
+    : "";
+}
 
 function goToIndex(type, searchTerm) {
-    const path = window.location.pathname;
-    const isGithubPages = path.includes("java24-js-slutprojekt-manne-michaelsson");
-
-    const basePath = isGithubPages ? "/java24-js-slutprojekt-manne-michaelsson" : "";
-    window.location.href = `${basePath}/index.html?type=${type}&search=${encodeURIComponent(searchTerm)}`;
+  const base = getBasePath();
+  window.location.href = `${base}/index.html?type=${type}&search=${encodeURIComponent(searchTerm)}`;
 }
 
 searchMovieForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const searchTerm = movieSearchInput.value.trim();
-
-    if (searchTerm) {
-        goToIndex("movie", searchTerm);
-    }
+  event.preventDefault();
+  const searchTerm = movieSearchInput.value.trim();
+  if (searchTerm) {
+    goToIndex("movie", searchTerm);
+  }
 });
 
 searchPersonForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const searchTerm = personSearchInput.value.trim();
-
-    if (searchTerm) {
-        goToIndex("person", searchTerm);
-    }
+  event.preventDefault();
+  const searchTerm = personSearchInput.value.trim();
+  if (searchTerm) {
+    goToIndex("person", searchTerm);
+  }
 });
 
 fetchPopularMovies();
