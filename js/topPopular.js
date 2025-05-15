@@ -76,24 +76,31 @@ movieSearchForm.addEventListener("submit", function(event){
     }
 })
 
+function getBasePath() {
+  const pathname = window.location.pathname;
+  const lastSlashIndex = pathname.lastIndexOf("/");
+  const basePath = window.location.origin + pathname.slice(0, lastSlashIndex + 1);
+  return basePath;
+}
+
 searchMovieForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const searchTerm = movieSearchInput.value.trim();
-
-    if(searchTerm) {
-        window.location.href = `../index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
-    }
-})
+  const searchTerm = movieSearchInput.value.trim();
+  if (searchTerm) {
+    const basePath = getBasePath();
+    window.location.href = `${basePath}index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
+  }
+});
 
 searchPersonForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const searchTerm = personSearchInput.value.trim();
-
-    if(searchTerm) {
-        window.location.href = `../index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
-    }
-})
+  const searchTerm = personSearchInput.value.trim();
+  if (searchTerm) {
+    const basePath = getBasePath();
+    window.location.href = `${basePath}index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
+  }
+});
 
 fetchPopularMovies();
