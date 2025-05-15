@@ -8,6 +8,12 @@ const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
 
 const topRatedContainer = document.getElementById("topTenContainer");
 
+const searchMovieForm = document.getElementById("movieSearchForm")
+const searchPersonForm = document.getElementById("personSearchForm")
+
+const searchMovieInput = document.getElementById("movieSearchInput")
+const searchPersonInput = document.getElementById("personSearchInput")
+
 async function fetchTopRatedMovies() {
     try {
         const response = await fetch(url)
@@ -40,5 +46,25 @@ function displayMovies(movies) {
         topRatedContainer.appendChild(movieCard);
     });
 }
+
+searchMovieForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const searchTerm = movieSearchInput.value.trim();
+
+    if(searchTerm) {
+        window.location.href = `/index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
+    }
+})
+
+searchPersonForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const searchTerm = personSearchInput.value.trim();
+
+    if(searchTerm) {
+        window.location.href = `/index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
+    }
+})
 
 fetchTopRatedMovies();

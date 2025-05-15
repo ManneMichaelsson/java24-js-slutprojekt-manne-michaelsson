@@ -8,9 +8,11 @@ const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
 
 const topRatedContainer = document.getElementById("topTenContainer");
 
-const personSearchForm = document.getElementById("personSearchForm");
+const searchMovieForm = document.getElementById("movieSearchForm")
+const searchPersonForm = document.getElementById("personSearchForm")
 
-const movieSearchForm = document.getElementById("movieSearchForm");
+const searchMovieInput = document.getElementById("movieSearchInput")
+const searchPersonInput = document.getElementById("personSearchInput")
 
 //hämtar data från API:n 
 async function fetchPopularMovies(){
@@ -71,6 +73,26 @@ movieSearchForm.addEventListener("submit", function(event){
         window.location.href = `/index.html?search=${encodeURIComponent(searchTerm)}`;
     } else {
         alert("Vänligen ange ett namn för att söka efter en film.");
+    }
+})
+
+searchMovieForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const searchTerm = movieSearchInput.value.trim();
+
+    if(searchTerm) {
+        window.location.href = `/index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
+    }
+})
+
+searchPersonForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const searchTerm = personSearchInput.value.trim();
+
+    if(searchTerm) {
+        window.location.href = `/index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
     }
 })
 

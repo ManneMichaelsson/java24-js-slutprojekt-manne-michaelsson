@@ -12,6 +12,40 @@ import { displayPerson, displayMovies } from './js/display.js';
     let currentPersonResults = [];
     let currentMovieResults = [];
 
+    window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchType = params.get("type"); // person eller movie
+    const searchTerm = params.get("search");
+
+    if (searchTerm && searchType === "movie") {
+        movieSearchInput.value = searchTerm;
+
+        fetchSearchMovie(searchTerm)
+            .then(results => {
+                currentMovieResults = results;
+                currentPersonResults = [];
+                sortAndDisplay();
+            })
+            .catch(error => {
+                container.innerHTML = "<p>Fel vid hämtning av filmer.</p>";
+            });
+    }
+
+    if (searchTerm && searchType === "person") {
+        personSearchInput.value = searchTerm;
+
+        fetchSearchPerson(searchTerm)
+            .then(results => {
+                currentPersonResults = results;
+                currentMovieResults = [];
+                sortAndDisplay();
+            })
+            .catch(error => {
+                container.innerHTML = "<p>Fel vid hämtning av personer.</p>";
+            });
+    }
+});
+
     //Personsökning
     searchPersonForm.addEventListener("submit", (event) => {
         event.preventDefault(); 
