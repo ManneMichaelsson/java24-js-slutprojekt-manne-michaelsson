@@ -47,31 +47,4 @@ function displayMovies(movies) {
     });
 }
 
-function getBasePath() {
-  return window.location.hostname === "mannemichaelsson.github.io"
-    ? "/java24-js-slutprojekt-manne-michaelsson"
-    : "";
-}
-
-function goToIndex(type, searchTerm) {
-  const base = getBasePath();
-  window.location.href = `${base}/index.html?type=${type}&search=${encodeURIComponent(searchTerm)}`;
-}
-
-searchMovieForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const searchTerm = movieSearchInput.value.trim();
-  if (searchTerm) {
-    goToIndex("movie", searchTerm);
-  }
-});
-
-searchPersonForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const searchTerm = personSearchInput.value.trim();
-  if (searchTerm) {
-    goToIndex("person", searchTerm);
-  }
-});
-
 fetchTopRatedMovies();

@@ -53,20 +53,4 @@ function displayMovies(movies){
 
 }
 
-searchMovieForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const searchTerm = movieSearchInput.value.trim();
-  if (searchTerm) {
-    window.location.href = `/index.html?type=movie&search=${encodeURIComponent(searchTerm)}`;
-  }
-});
-
-searchPersonForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const searchTerm = personSearchInput.value.trim();
-  if (searchTerm) {
-    window.location.href = `/index.html?type=person&search=${encodeURIComponent(searchTerm)}`;
-  }
-});
-
 fetchPopularMovies();
