@@ -30,11 +30,14 @@ async function fetchTopRatedMovies() {
 function displayMovies(movies) {
     topRatedContainer.innerHTML = "";
 
+    let topTenNumber = 1;
+
     movies.forEach((movie) => {
         const movieCard = document.createElement("div");
         movieCard.classList.add("movie-card");
 
         movieCard.innerHTML = `
+        <h3>Top ${topTenNumber}</h3>
             <img src="${imageBaseUrl + movie.poster_path}" alt="${movie.title}" />
             <div class="info">
                 <h3>${movie.title}</h3>
@@ -43,6 +46,7 @@ function displayMovies(movies) {
             </div>
         `;
 
+        topTenNumber++;
         topRatedContainer.appendChild(movieCard);
     });
 }
